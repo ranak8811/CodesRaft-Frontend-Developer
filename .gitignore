@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Project Specific files
-Instructions/*
-Project_files/*

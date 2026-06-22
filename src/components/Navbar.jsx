@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FiShoppingBag, FiMenu, FiX, FiUser } from "react-icons/fi";
+import { useCart } from "../context/CartContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { cartCount } = useCart();
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -49,9 +52,11 @@ const Navbar = () => {
             >
               <FiShoppingBag className="w-6 h-6" />
 
-              <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                  {cartCount}
+                </span>
+              )}
             </Link>
             <Link
               to="/checkout"
@@ -107,7 +112,7 @@ const Navbar = () => {
               className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600"
             >
               <FiShoppingBag className="w-6 h-6" />
-              <span className="font-medium">Cart (0)</span>
+              <span className="font-medium">Cart ({cartCount})</span>
             </Link>
             <Link
               to="/checkout"

@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiStar, FiShoppingBag } from "react-icons/fi";
 import { products } from "../../data/mockData";
+import { useCart } from "../../context/CartContext";
 
 const FeaturedProducts = () => {
   const [activeTab, setActiveTab] = useState("featured");
+  const { addToCart } = useCart();
 
   const filteredProducts = products.filter((product) => {
     if (activeTab === "featured") return product.isFeatured;
@@ -28,7 +30,7 @@ const FeaturedProducts = () => {
           <div className="flex bg-white rounded-xl p-1 border border-gray-200/80 shadow-sm">
             <button
               onClick={() => setActiveTab("featured")}
-              className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+              className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 activeTab === "featured"
                   ? "bg-indigo-600 text-white shadow"
                   : "text-gray-600 hover:text-indigo-600"
@@ -38,7 +40,7 @@ const FeaturedProducts = () => {
             </button>
             <button
               onClick={() => setActiveTab("bestsellers")}
-              className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+              className={`px-6 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer ${
                 activeTab === "bestsellers"
                   ? "bg-indigo-600 text-white shadow"
                   : "text-gray-600 hover:text-indigo-600"
@@ -80,7 +82,6 @@ const FeaturedProducts = () => {
                     alt={product.name}
                     className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                   />
-
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="bg-white/95 text-gray-900 font-semibold px-4 py-2 rounded-lg shadow-sm border border-gray-100 text-sm">
                       View Details
@@ -123,10 +124,8 @@ const FeaturedProducts = () => {
                     </div>
 
                     <button
-                      onClick={() =>
-                        alert(`Adding product: ${product.name} to cart`)
-                      }
-                      className="bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 p-2.5 rounded-xl border border-indigo-100 hover:border-indigo-600 flex items-center justify-center shadow-sm"
+                      onClick={() => addToCart(product)}
+                      className="bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300 p-2.5 rounded-xl border border-indigo-100 hover:border-indigo-600 flex items-center justify-center shadow-sm cursor-pointer"
                       title="Add to Cart"
                     >
                       <FiShoppingBag className="w-5 h-5" />

@@ -6,7 +6,7 @@ import {
   FiShoppingCart,
   FiArrowRight,
 } from "react-icons/fi";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, cartTotal } = useCart();

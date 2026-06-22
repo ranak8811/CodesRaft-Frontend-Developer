@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FiShoppingBag, FiMenu, FiX, FiUser } from "react-icons/fi";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

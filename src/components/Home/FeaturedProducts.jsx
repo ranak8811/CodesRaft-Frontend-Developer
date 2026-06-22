@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiStar, FiShoppingBag } from "react-icons/fi";
 import { products } from "../../data/mockData";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../hooks/useCart";
 
 const FeaturedProducts = () => {
   const [activeTab, setActiveTab] = useState("featured");

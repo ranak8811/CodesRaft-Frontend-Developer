@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import ProductDetails from "./pages/ProductDetails";
 
 const App = () => {
   return (
@@ -11,6 +12,8 @@ const App = () => {
         <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
+
+            <Route path="/product/:id" element={<ProductDetails />} />
           </Routes>
         </main>
         <Footer />
